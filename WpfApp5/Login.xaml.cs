@@ -96,11 +96,6 @@ namespace WpfApp5
             }
         }
 
-        private void Click_Reg(object sender, RoutedEventArgs e)
-        {
-            ClassChangePage.frame1.Navigate(new Registration());
-        }
-
         private void OnPasswordChanged(object sender, RoutedEventArgs e)
         {
             Watermark.Visibility = box_password.Password.Length > 0 ? Visibility.Collapsed : Visibility.Visible;

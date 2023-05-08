@@ -52,7 +52,7 @@ namespace WpfApp5
 
             private void Button_Click(object sender, RoutedEventArgs e)
             {
-                MessageBox.Show("Оператор скоро прибудет, ожидайте.");
+                MessageBox.Show("Администратор скоро прибудет, ожидайте.");
             }
 
             private void ChangeTheme_Click(object sender, RoutedEventArgs e)

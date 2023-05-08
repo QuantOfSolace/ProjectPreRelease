@@ -17,5 +17,6 @@ namespace WpfApp5
         public string login { get; set; }
         public string password { get; set; }
         public string root { get; set; }
+        public string name { get; set; }
     }
 }

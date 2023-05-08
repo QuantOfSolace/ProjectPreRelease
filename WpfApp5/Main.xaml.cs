@@ -24,13 +24,13 @@ namespace WpfApp5
         {   
             InitializeComponent();   
 
-            myLabel.Content = "Уровень доступа: " + GetUserNameByLogin(GlobalVar.PanelLogin);
+            myLabel.Content = "Уровень доступа: " + GlobalMethods.GetUserNameUser(GlobalVar.PanelLogin);
 
             comboBox.SelectionChanged += new SelectionChangedEventHandler(ComboBox_SelectionChanged);
 
             using (TESTEntities DataBase = new TESTEntities())
             {
-                System.Collections.Generic.List<string> items = DataBase.mainUsers.Select(x => x.Id_Name).ToList();
+                List<string> items = DataBase.mainUsers.Select(x => x.Id_Name).ToList();
                 foreach (string item in items)
                 {
                     ComboBoxItem comboBoxItem = new ComboBoxItem
@@ -43,21 +43,6 @@ namespace WpfApp5
         }
 
         private readonly TESTEntities dataBase = new TESTEntities();
-
-        private string GetUserNameByLogin(string login)
-        {
-            // Получить объект пользователя из БД по login:
-            users user = dataBase.users.FirstOrDefault(u => u.login == login);
-
-            // Если у пользователя есть имя, то вернуть его:
-            if (user != null && !string.IsNullOrEmpty(user.root))
-            {
-                return user.root;
-            }
-
-            // В противном случае вернуть пустую строку:
-            return string.Empty;
-        }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -104,7 +89,7 @@ namespace WpfApp5
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Вы уверены?", "Вопрос", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Вы уверены?", "Выход из учётной записи", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
                 GlobalVar.StatusAuth = false;

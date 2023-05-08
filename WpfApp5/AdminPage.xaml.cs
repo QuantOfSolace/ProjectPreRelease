@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,9 +13,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp5
 {
@@ -26,45 +30,65 @@ namespace WpfApp5
         {
             InitializeComponent();
 
-            myLabel.Content = "Уровень доступа: " + GetUserNameByLogin(GlobalVar.PanelLogin);
+            myLabel.Content = "Уровень доступа: " + GlobalMethods.GetUserNameAdmin(GlobalVar.PanelLogin);
+            Hello.Text = "Здравствуйте, " + GlobalMethods.GetName(GlobalVar.PanelLogin);
 
-            dataBase = new TESTEntities();
-            dataBase.users.Load();
+            BrushConverter converter = new BrushConverter();
 
-            usersGrid.ItemsSource = dataBase.users.Local.ToBindingList();
-        }
-
-        private readonly TESTEntities dataBase = new TESTEntities();
-
-        private string GetUserNameByLogin(string login)
-        {
-            // Получить объект пользователя из БД по login:
-            admins user = dataBase.admins.FirstOrDefault(u => u.login == login);
-
-            // Если у пользователя есть имя, то вернуть его:
-            return user != null && !string.IsNullOrEmpty(user.root) ? user.root : string.Empty;
+            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                if (GlobalVar.ThemeNegr == true)
+                {
+                    Hello.Foreground = (Brush)converter.ConvertFromString("White");
+                    Hello.Foreground = (Brush)converter.ConvertFromString("White");
+                }
+                if (GlobalVar.ThemeNegr == false)
+                {
+                    Hello.Foreground = (Brush)converter.ConvertFromString("Black");
+                    Hello.Foreground = (Brush)converter.ConvertFromString("Black");
+                }
+            }
+           , Dispatcher);
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            ClassChangePage.frame1.Navigate(new Login());
+            MessageBoxResult result = MessageBox.Show("Вы уверены?", "Выход из учётной записи", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                GlobalVar.StatusAuth = false;
+                ClassChangePage.frame1.Navigate(new Login());
+            }
         }
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void AdminPage_Loaded(object sender2, RoutedEventArgs e)
         {
-            dataBase.Dispose();
+            // Находим элемент Border по его имени
+            Border myBorder = (Border)FindName("myBorder");
+
+            // Создаем анимацию для изменения прозрачности
+            DoubleAnimation opacityAnimation = new DoubleAnimation
+            {
+                From = 0, // Начальное значение прозрачности
+                To = 1, // Конечное значение прозрачности
+                Duration = new Duration(TimeSpan.FromSeconds(1)) // Длительность анимации
+            };
+
+            // Создаем анимацию для изменения положения
+            ThicknessAnimation positionAnimation = new ThicknessAnimation
+            {
+                From = new Thickness(50, 100, 0, -100), // Начальное значение положения (скрытое)
+                To = new Thickness(50, 0, 0, 0), // Конечное значение положения (отображение на экране)
+                Duration = new Duration(TimeSpan.FromSeconds(1)) // Длительность анимации
+            };
+
+            // Запускаем анимации
+            myBorder.BeginAnimation(OpacityProperty, opacityAnimation);
+            myBorder.BeginAnimation(MarginProperty, positionAnimation);
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                dataBase.SaveChanges();
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            ClassChangePage.frame1.Navigate(new Registration());
         }
     }
 }

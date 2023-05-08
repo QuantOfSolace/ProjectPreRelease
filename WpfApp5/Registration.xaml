@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp5"
       mc:Ignorable="d" 
-       d:DesignHeight="820" d:DesignWidth="1920"
-      Title="Registration">
+      d:DesignHeight="820" 
+      d:DesignWidth="1920">
     <Page.Resources>
         <ControlTemplate x:Key="box_Password" 
                          TargetType="{x:Type PasswordBox}">
@@ -15,7 +15,6 @@
                     BorderBrush="Black"
                     BorderThickness="2px" 
                     CornerRadius="10">
-
                 <ScrollViewer Name="PART_ContentHost" 
                               SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"/>
             </Border>
@@ -29,10 +28,10 @@
                Margin="0,0,80,235" 
                VerticalAlignment="Center" 
                HorizontalAlignment="Center"/>
-
         <TextBox x:Name="box_login" 
                  BorderBrush="Black"
-                 Width="300" Height="40"
+                 Width="300" 
+                 Height="40"
                  Margin="0,0,0,170"
                  HorizontalAlignment="Center" 
                  VerticalAlignment="Center"
@@ -41,7 +40,6 @@
                  HorizontalContentAlignment="Left" 
                  VerticalContentAlignment="Center" 
                  Padding="10,0,0,0">
-
             <TextBox.Effect>
                 <DropShadowEffect/>
             </TextBox.Effect>
@@ -59,7 +57,6 @@
                    Opacity="0.9"
                    VerticalAlignment="Center" 
                    Margin="0,0,185,170">
-
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" 
@@ -81,12 +78,12 @@
                Margin="0,0,80,95" 
                HorizontalAlignment="Center" 
                VerticalAlignment="Center"/>
-
         <PasswordBox Template="{StaticResource box_Password}"
                      x:Name="box_password" 
                      Width="300" 
                      Height="40" 
-                     Margin="0,0,0,30" Password="" 
+                     Margin="0,0,0,30" 
+                     Password="" 
                      BorderBrush="Black"
                      BorderThickness="2px"
                      HorizontalAlignment="Center" 
@@ -95,7 +92,6 @@
                      FontSize="18" 
                      HorizontalContentAlignment="Left" 
                      VerticalContentAlignment="Center">
-
             <PasswordBox.Style>
                 <Style TargetType="PasswordBox">
                     <EventSetter Event="PasswordChanged" 
@@ -124,7 +120,6 @@
                HorizontalAlignment="Center" 
                VerticalAlignment="Center"
                Margin="0,45,80,0"/>
-
         <PasswordBox Template="{StaticResource box_Password}"
                      x:Name="box_check_password" 
                      Width="300" 
@@ -138,7 +133,6 @@
                      FontSize="18" 
                      HorizontalContentAlignment="Left" 
                      VerticalContentAlignment="Center">
-
             <PasswordBox.Style>
                 <Style TargetType="PasswordBox">
                     <EventSetter Event="PasswordChanged" 
@@ -158,9 +152,8 @@
                    Margin="0,0,175,30" 
                    Opacity="0.9">
         </TextBlock>
-
         <Button Click="Check_click" 
-                Content="Зарегестрироваться" 
+                Content="Зарегистрироваться" 
                 Width="250" 
                 Height="40" 
                 Margin="0,240,160,0" 
@@ -169,7 +162,6 @@
                 BorderThickness="2px"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center">
-
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" 
@@ -180,7 +172,6 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-
         <Button Click="Back_click" 
                 Content="Отмена" 
                 Width="130" 
@@ -191,7 +182,6 @@
                 BorderThickness="2px" 
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center">
-
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" 

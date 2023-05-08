@@ -5,9 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp5"
       mc:Ignorable="d" 
-      d:DesignHeight="820" d:DesignWidth="1920"
-      Title="Main">
-
+      d:DesignHeight="820" 
+      d:DesignWidth="1920">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -18,7 +17,6 @@
               Background="Black">
             <StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Left">
-
                 <StackPanel Width="350" 
                             Height="50">
                     <ToggleButton x:Name="menuButton" 
@@ -30,7 +28,6 @@
                         <StackPanel Orientation="Horizontal"
                                     Width="350px" 
                                     Background="Transparent">
-
                             <Image Margin="20,0,0,0"  
                                    Name="UserPanel" 
                                    VerticalAlignment="Center" 

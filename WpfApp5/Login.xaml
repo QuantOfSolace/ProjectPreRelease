@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp5"
       mc:Ignorable="d" 
-       d:DesignHeight="820" d:DesignWidth="1920"
+      d:DesignHeight="820" 
+      d:DesignWidth="1920"
       Title="Login">
     <Page.Resources>
         <ControlTemplate x:Key="box_Password" 
@@ -61,7 +62,8 @@
                     <Setter Property="Visibility" 
                             Value="Collapsed"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=box_login}"
+                        <DataTrigger Binding="{Binding Text, 
+                                                       ElementName=box_login}"
                                      Value="">
                             <Setter Property="Visibility" 
                                     Value="Visible"/>
@@ -108,35 +110,15 @@
                    Margin="-210,20,0,0" >
         </TextBlock>
         <Button Content="Войти"
-                Width="130"
-                Height="40" 
-                Margin="0,140,0,0"
+                Width="160"
+                Height="50" 
+                Margin="0,190,0,0"
                 BorderBrush="Black" 
-                FontSize="18" 
+                FontSize="20" 
                 BorderThickness="2px" 
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center" 
                 Click="Button_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius"
-                            Value="10"/>
-                </Style>
-            </Button.Resources>
-            <Button.Effect>
-                <DropShadowEffect/>
-            </Button.Effect>
-        </Button>
-        <Button Click="Click_Reg" 
-                Content="Зарегестрироваться" 
-                Width="250" 
-                Height="40" 
-                Margin="0,280,0,0" 
-                BorderBrush="Black"
-                FontSize="18" 
-                BorderThickness="2px"
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Center">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius"

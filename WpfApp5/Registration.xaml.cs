@@ -138,7 +138,7 @@ namespace WpfApp5
 
         private void Back_click(object sender, RoutedEventArgs e)
         {
-            ClassChangePage.frame1.Navigate(new Login());
+            ClassChangePage.frame1.Navigate(new AdminPage());
         }
 
         private void OnPasswordChanged1(object sender, RoutedEventArgs e)
