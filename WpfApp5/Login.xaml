@@ -1,0 +1,151 @@
+﻿<Page x:Class="WpfApp5.Login"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp5"
+      mc:Ignorable="d" 
+       d:DesignHeight="820" d:DesignWidth="1920"
+      Title="Login">
+    <Page.Resources>
+        <ControlTemplate x:Key="box_Password" 
+                         TargetType="{x:Type PasswordBox}">
+            <Border Background="{TemplateBinding Background}" 
+                    x:Name="Bd" 
+                    BorderBrush="Black"
+                    BorderThickness="2px" 
+                    CornerRadius="10">
+                <ScrollViewer Name="PART_ContentHost" 
+                              SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"/>
+            </Border>
+        </ControlTemplate>
+    </Page.Resources>
+    <Grid>
+        <Label Name="label1" 
+               Content="Введите логин:" 
+               Width="300"
+               Height="30" 
+               Margin="300,120,300,300" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center"/>
+        <TextBox x:Name="box_login"
+                 BorderBrush="Black"
+                 Width="300" 
+                 Height="40"
+                 Margin="300,150,300,270" 
+                 BorderThickness="2px" 
+                 HorizontalAlignment="Center" 
+                 VerticalAlignment="Center"
+                 FontSize="18" 
+                 HorizontalContentAlignment="Left" 
+                 VerticalContentAlignment="Center" 
+                 Padding="10,0,0,0">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" 
+                            Value="10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBlock IsHitTestVisible="False" 
+                   FontSize="18" 
+                   Text="Логин"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   Margin="-220,-120,0,0">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" 
+                            Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=box_login}"
+                                     Value="">
+                            <Setter Property="Visibility" 
+                                    Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Label Name="label2" 
+               Content="Введите пароль:" 
+               Width="300" 
+               Height="30" 
+               Margin="300,200,300,240" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center"/>
+        <PasswordBox Template="{StaticResource box_Password}" 
+                     x:Name="box_password"
+                     Width="300" 
+                     Height="40" 
+                     Margin="300,230,300,210" 
+                     Password="" 
+                     HorizontalAlignment="Center" 
+                     VerticalAlignment="Center"
+                     Padding="10,0,0,0" 
+                     FontSize="18" 
+                     HorizontalContentAlignment="Left" 
+                     VerticalContentAlignment="Center">
+            <PasswordBox.Style>
+                <Style TargetType="PasswordBox">
+                    <EventSetter Event="PasswordChanged" 
+                                 Handler="OnPasswordChanged"/>
+                </Style>
+            </PasswordBox.Style>
+            <PasswordBox.Effect>
+                <DropShadowEffect/>
+            </PasswordBox.Effect>
+        </PasswordBox>
+        <TextBlock Name="Watermark" 
+                   IsHitTestVisible="False"
+                   FontSize="18" 
+                   Text="Пароль"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   Margin="-210,20,0,0" >
+        </TextBlock>
+        <Button Content="Войти"
+                Width="130"
+                Height="40" 
+                Margin="0,140,0,0"
+                BorderBrush="Black" 
+                FontSize="18" 
+                BorderThickness="2px" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Click="Button_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius"
+                            Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button Click="Click_Reg" 
+                Content="Зарегестрироваться" 
+                Width="250" 
+                Height="40" 
+                Margin="0,280,0,0" 
+                BorderBrush="Black"
+                FontSize="18" 
+                BorderThickness="2px"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius"
+                            Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+    </Grid>
+</Page>

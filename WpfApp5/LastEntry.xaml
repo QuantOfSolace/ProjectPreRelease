@@ -1,0 +1,107 @@
+﻿<Page x:Class="WpfApp5.LastEntry"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp5"
+      mc:Ignorable="d" 
+d:DesignHeight="820" d:DesignWidth="1920"
+      Title="LastEntry">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="770"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" 
+              Name="Panel" 
+              Background="Black">
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Left">
+                <StackPanel Height="50">
+                    <Button x:Name="ToTxtButton" 
+                            Height="50px" 
+                            Width="350px" 
+                            Click="ToTxtButton_Click" 
+                            Content="Выгрузка данных в файл" 
+                            Background="Transparent" 
+                            Foreground="CadetBlue"
+                            FontFamily="Yu Gothic UI Semibold" 
+                            FontSize="18"
+                            BorderBrush="White"
+                            BorderThickness="0,0,1,0" >
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <Button x:Name="ExitButton" 
+                        Height="50px"
+                        Width="350px" 
+                        Click="ExitButton_Click" 
+                        Content="Вернуться на главное окно" 
+                        Background="Transparent" 
+                        Foreground="CadetBlue" 
+                        FontFamily="Yu Gothic UI Semibold" 
+                        FontSize="18"
+                        BorderBrush="White" 
+                        BorderThickness="1,0,0,0" 
+                        Margin="0.1,0,0,0">
+                </Button>
+            </StackPanel>
+        </Grid>
+        <ScrollViewer Grid.Row="1" 
+                      HorizontalScrollBarVisibility="Disabled" 
+                      VerticalScrollBarVisibility="Visible" 
+                      VerticalAlignment="Top" 
+                      Width="1920" 
+                      MinHeight="770" 
+                      MaxHeight="20000">
+            <StackPanel Orientation="Horizontal" 
+                        Name="ListLastEntry" 
+                        Width="1920">
+                <Label Name="Time" 
+                       Margin="40,40,0,30" 
+                       FontSize="24" 
+                       Width="300" 
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Top">
+                </Label>
+                <Label Name="Id" 
+                       Margin="0,40,0,0" 
+                       FontSize="24" 
+                       Width="200" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top">
+                </Label>
+                <Label Name="FirstName"
+                       Margin="0,40,0,0" 
+                       FontSize="24" 
+                       Width="200"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Top">
+                </Label>
+                <Label Name="SurrName"
+                       Margin="0,40,0,0"
+                       FontSize="24"
+                       Width="300"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top">
+                </Label>
+                <Label Name="LastName" 
+                       Margin="0,40,0,0" 
+                       FontSize="24"
+                       Width="400"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Top">
+                </Label>
+                <Label Name="RootPass" 
+                       Margin="0,40,0,0" 
+                       FontSize="24"
+                       Width="400"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top">
+                </Label>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
