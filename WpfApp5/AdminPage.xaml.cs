@@ -90,6 +90,16 @@ namespace WpfApp5
         {
             ClassChangePage.frame1.Navigate(new Registration());
         }
+
+        private void Button_Click_User(object sender, RoutedEventArgs e)
+        {
+            ClassChangePage.frame1.Navigate(new TableUsers());
+        }
+
+        private void Button_Click_Oper(object sender, RoutedEventArgs e)
+        {
+            ClassChangePage.frame1.Navigate(new TableOpers());
+        }
     }
 }
 

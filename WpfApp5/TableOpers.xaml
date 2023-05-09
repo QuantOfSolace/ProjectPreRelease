@@ -1,4 +1,4 @@
-﻿<Page x:Class="WpfApp5.TableUsers"
+﻿<Page x:Class="WpfApp5.TableOpers"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -83,10 +83,10 @@
                             Foreground="CadetBlue"
                             FontFamily="Yu Gothic UI Semibold"
                             FontSize="18">
-                        <TextBlock TextAlignment="Center"> Выгрузить таблицу
+                    <TextBlock TextAlignment="Center"> Выгрузить таблицу
                                             <LineBreak/> Пользователей
-                        </TextBlock>
-                    </Button>
+                    </TextBlock>
+                </Button>
             </Popup>
             <DataGrid x:Name="usersGrid" 
                       ItemsSource="{Binding users}" 
@@ -97,12 +97,18 @@
                       VerticalAlignment="Top"
                       Margin="0 ,40, 0, 0">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Root" 
-                                        Binding="{Binding root}" />
-                    <DataGridTextColumn Header="Login" 
-                                        Binding="{Binding login}" />
-                    <DataGridTextColumn Header="Password" 
-                                        Binding="{Binding password}" />
+                    <DataGridTextColumn Header="Id_Name" 
+                                        Binding="{Binding Id_Name}" />
+                    <DataGridTextColumn Header="FirstName" 
+                                        Binding="{Binding FirstName}" />
+                    <DataGridTextColumn Header="SurrName" 
+                                        Binding="{Binding SurrName}" />
+                    <DataGridTextColumn Header="LastName" 
+                                        Binding="{Binding LastName}" />
+                    <DataGridTextColumn Header="PhoneNumber" 
+                                        Binding="{Binding PhoneNumber}" />
+                    <DataGridTextColumn Header="rootPass" 
+                                        Binding="{Binding rootPass}" />
                 </DataGrid.Columns>
             </DataGrid>
             <StackPanel Orientation="Horizontal"

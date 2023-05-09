@@ -154,9 +154,10 @@
                             VerticalAlignment="Bottom"
                             HorizontalAlignment="Left"
                             Margin="40"
-                            Content="Просмотреть список операторов" 
+                            Content="Просмотреть список рабочих" 
                             FontSize="22" 
-                            FontFamily="Yu Gothic UI Semibold">
+                            FontFamily="Yu Gothic UI Semibold" 
+                            Click="Button_Click_Oper">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" 
@@ -171,7 +172,8 @@
                             Margin="40"
                             Content="Просмотреть список пользователей" 
                             FontSize="22" 
-                            FontFamily="Yu Gothic UI Semibold">
+                            FontFamily="Yu Gothic UI Semibold" 
+                            Click="Button_Click_User">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" 

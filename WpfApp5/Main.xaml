@@ -107,9 +107,8 @@
                 <Popup PlacementTarget="{Binding ElementName=menuButton}" 
                        IsOpen="{Binding ElementName=menuButton, Path=IsChecked}"
                        Width="350px" 
-                       Height="180px">
-                    <StackPanel>
-                        <Button Width="350px"
+                       Height="60px">
+                    <Button Width="350px"
                                 Height="60px"  
                                 Background="Black"
                                 Click="Button_Click"
@@ -120,21 +119,6 @@
                                             <LineBreak/> Последних вошедших
                             </TextBlock>
                         </Button>
-                        <Button Width="350px" 
-                                Height="60px" 
-                                Content="ToBeComplete"
-                                Background="Black"
-                                Foreground="CadetBlue"
-                                FontFamily="Yu Gothic UI Semibold"
-                                FontSize="18"/>
-                        <Button Width="350px" 
-                                Height="60px" 
-                                Content="ToBeComplete" 
-                                Background="Black" 
-                                Foreground="CadetBlue" 
-                                FontFamily="Yu Gothic UI Semibold" 
-                                FontSize="18"/>
-                    </StackPanel>
                 </Popup>
                 <Border x:Name="BackGround" 
                         BorderThickness="1"

@@ -20,20 +20,19 @@ using System.Windows.Shapes;
 namespace WpfApp5
 {
     /// <summary>
-    /// Логика взаимодействия для TableUsers.xaml
+    /// Логика взаимодействия для TableOpers.xaml
     /// </summary>
-    public partial class TableUsers : Page
+    public partial class TableOpers : Page
     {
-        public TableUsers()
+        public TableOpers()
         {
             InitializeComponent();
-
             myLabel.Content = "Уровень доступа: " + GlobalMethods.GetUserNameAdmin(GlobalVar.PanelLogin);
 
             dataBase = new TESTEntities();
-            dataBase.users.Load();
+            dataBase.mainUsers.Load();
 
-            usersGrid.ItemsSource = dataBase.users.Local.ToBindingList();
+            usersGrid.ItemsSource = dataBase.mainUsers.Local.ToBindingList();
         }
 
         private readonly TESTEntities dataBase = new TESTEntities();
@@ -42,7 +41,7 @@ namespace WpfApp5
         {
             string header;
 
-            if (GlobalVar.StatusSave1)
+            if (GlobalVar.StatusSave2)
             {
                 header = "Изменения сохранены. Вы уверены?";
             }
@@ -64,7 +63,7 @@ namespace WpfApp5
                 try
                 {
                     dataBase.SaveChanges();
-                    GlobalVar.StatusSave1 = true;
+                    GlobalVar.StatusSave2 = true;
                 }
 
                 catch (Exception ex)
@@ -73,27 +72,34 @@ namespace WpfApp5
                 }
             }
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             using (var db = new TESTEntities())
             {
-                var users = db.users.ToList();
+                var users = db.mainUsers.ToList();
 
                 ExcelPackage.LicenseContext = LicenseContext.Commercial;
                 var excelPackage = new ExcelPackage();
-                var worksheet = excelPackage.Workbook.Worksheets.Add("Users");
+                var worksheet = excelPackage.Workbook.Worksheets.Add("mainUsers");
 
                 // Добавляем заголовки столбцов
-                worksheet.Cells[1, 1].Value = "Login";
-                worksheet.Cells[1, 2].Value = "Password";
-                worksheet.Cells[1, 3].Value = "Root";
+                worksheet.Cells[1, 1].Value = "Id_Name";
+                worksheet.Cells[1, 2].Value = "FirstName";
+                worksheet.Cells[1, 3].Value = "SurrName";
+                worksheet.Cells[1, 4].Value = "LastName";
+                worksheet.Cells[1, 5].Value = "PhoneNumber";
+                worksheet.Cells[1, 6].Value = "rootPass";
 
                 // Заполняем таблицу данными
                 for (int i = 0; i < users.Count; i++)
                 {
-                    worksheet.Cells[i + 2, 1].Value = users[i].login;
-                    worksheet.Cells[i + 2, 2].Value = users[i].password;
-                    worksheet.Cells[i + 2, 3].Value = users[i].root;
+                    worksheet.Cells[i + 2, 1].Value = users[i].Id_Name;
+                    worksheet.Cells[i + 2, 2].Value = users[i].FirstName;
+                    worksheet.Cells[i + 2, 3].Value = users[i].SurrName;
+                    worksheet.Cells[i + 2, 4].Value = users[i].LastName;
+                    worksheet.Cells[i + 2, 5].Value = users[i].PhoneNumber;
+                    worksheet.Cells[i + 2, 6].Value = users[i].rootPass;
                 }
 
                 // Сохраняем файл
@@ -101,7 +107,7 @@ namespace WpfApp5
                 {
                     Filter = "Excel Files|*.xlsx",
                     DefaultExt = ".xlsx",
-                    FileName = "Users"
+                    FileName = "mainUsers"
                 };
 
                 bool? result = dialog.ShowDialog();

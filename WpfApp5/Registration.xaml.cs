@@ -105,7 +105,7 @@ namespace WpfApp5
                                             DataBase.users.Add(user);
                                             DataBase.SaveChanges();
                                             MessageBox.Show("Пользователь зарегистрирован");
-                                            ClassChangePage.frame1.Navigate(new Login());
+                                            ClassChangePage.frame1.Navigate(new Login());   
                                         }
                                     }
                                 }

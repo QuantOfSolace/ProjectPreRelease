@@ -24,6 +24,8 @@ namespace WpfApp5
         public static List<string> selectionChangedInitLastName = new List<string>();
         public static List<string> selectionChangedInitRootPass = new List<string>();
         public static bool StatusAuth;
+        public static bool StatusSave1;
+        public static bool StatusSave2;
 
         internal static string GetUserNameByLogin(string panelLogin)
         {
